@@ -1,11 +1,22 @@
+import random
+
 def jogar():
     print("************************************")
     print("Bem vindo(a) ao jogo de Forca!")
     print("************************************")
 
-    palavra_secreta = "banana".upper()
+    arquivo = open("palavras.txt", "r")
+    palavras = []
+
+    for linha in arquivo:
+        palavras.append(linha.strip())
+
+    arquivo.close()
+
+    posicao = random.randrange(0, len(palavras))
+    palavra_secreta = palavras[posicao].upper()
     letras_acertadas = ["_" for letra in palavra_secreta]
-    
+
     enforcou = False
     acertou = False
     erros = 0
